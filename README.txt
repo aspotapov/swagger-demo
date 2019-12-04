@@ -1,0 +1,1 @@
+Sample REST service with Swagger description

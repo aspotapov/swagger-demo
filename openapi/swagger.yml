@@ -1,0 +1,101 @@
+openapi: "3.0.2"
+info:
+  description: Tree-style list management
+  version: "1.0.0"
+  title: Tree-style list management
+components:
+  schemas:
+    Item:
+      type: object
+      description: Item
+      required:
+        - header
+        - leaf
+      properties:
+        id:
+          type: integer
+        parent:
+          type: integer
+          nullable: true
+        header:
+          type: string
+        content:
+          type: string
+        leaf:
+          type: boolean
+paths:
+  /tree:
+    post:
+      operationId: storage.add_item
+      summary: Creates new element
+      description: Creates new element
+      requestBody:
+        description: Item
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        201:
+          description: Created
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/Item'
+    get:
+      operationId: storage.get_root_item
+      summary: Reads root element
+      description: Reads root element
+      responses:
+        200:
+          description: Successfully read item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+
+  /tree/{item_id}:
+    parameters:
+      - name: item_id
+        in: path
+        required: true
+        description: Id of the person to get
+        schema:
+          type: integer
+    get:
+      operationId: storage.get_item
+      summary: Read item
+      description: Read item
+      responses:
+        200:
+          description: Successfully read item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    put:
+      operationId: storage.update_item
+      summary: Update an item
+      description: Update an item
+      requestBody:
+        description: Item
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+          200:
+            description: Successfully updated item info
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Item'
+    delete:
+      operationId: storage.delete_item
+      summary: Delete an item from tree
+      description: Delete an item from tree
+      responses:
+        200:
+          description: Successfully deleted an item
