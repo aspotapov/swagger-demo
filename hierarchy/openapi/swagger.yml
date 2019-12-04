@@ -26,7 +26,7 @@ components:
 paths:
   /tree:
     post:
-      operationId: storage.add_item
+      operationId: hierarchy.storage.add_item
       summary: Creates new element
       description: Creates new element
       requestBody:
@@ -44,7 +44,7 @@ paths:
               schema:
                $ref: '#/components/schemas/Item'
     get:
-      operationId: storage.get_root_item
+      operationId: hierarchy.storage.get_root_item
       summary: Reads root element
       description: Reads root element
       responses:
@@ -60,11 +60,11 @@ paths:
       - name: item_id
         in: path
         required: true
-        description: Id of the person to get
+        description: Id of the item to get
         schema:
           type: integer
     get:
-      operationId: storage.get_item
+      operationId: hierarchy.storage.get_item
       summary: Read item
       description: Read item
       responses:
@@ -75,7 +75,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Item'
     put:
-      operationId: storage.update_item
+      operationId: hierarchy.storage.update_item
       summary: Update an item
       description: Update an item
       requestBody:
@@ -93,7 +93,7 @@ paths:
                 schema:
                   $ref: '#/components/schemas/Item'
     delete:
-      operationId: storage.delete_item
+      operationId: hierarchy.storage.delete_item
       summary: Delete an item from tree
       description: Delete an item from tree
       responses:

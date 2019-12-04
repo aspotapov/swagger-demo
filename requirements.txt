@@ -1,2 +1,3 @@
 connexion[swagger-ui]
 aiohttp_jinja2
+peewee
